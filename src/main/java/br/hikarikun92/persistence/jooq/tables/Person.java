@@ -20,6 +20,7 @@ import org.jooq.TableOptions;
 import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.Internal;
+import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
 
 
@@ -29,10 +30,10 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Person extends TableImpl<PersonRecord> {
 
-    private static final long serialVersionUID = 2012449238;
+    private static final long serialVersionUID = 1L;
 
     /**
-     * The reference instance of <code>PERSON</code>
+     * The reference instance of <code>person</code>
      */
     public static final Person PERSON = new Person();
 
@@ -45,40 +46,19 @@ public class Person extends TableImpl<PersonRecord> {
     }
 
     /**
-     * The column <code>PERSON.ID</code>.
+     * The column <code>person.id</code>.
      */
-    public final TableField<PersonRecord, Integer> ID = createField(DSL.name("ID"), org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<PersonRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
-     * The column <code>PERSON.NAME</code>.
+     * The column <code>person.name</code>.
      */
-    public final TableField<PersonRecord, String> NAME = createField(DSL.name("NAME"), org.jooq.impl.SQLDataType.VARCHAR(255).nullable(false), this, "");
+    public final TableField<PersonRecord, String> NAME = createField(DSL.name("name"), SQLDataType.VARCHAR(255).nullable(false), this, "");
 
     /**
-     * The column <code>PERSON.AGE</code>.
+     * The column <code>person.age</code>.
      */
-    public final TableField<PersonRecord, Integer> AGE = createField(DSL.name("AGE"), org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
-
-    /**
-     * Create a <code>PERSON</code> table reference
-     */
-    public Person() {
-        this(DSL.name("PERSON"), null);
-    }
-
-    /**
-     * Create an aliased <code>PERSON</code> table reference
-     */
-    public Person(String alias) {
-        this(DSL.name(alias), PERSON);
-    }
-
-    /**
-     * Create an aliased <code>PERSON</code> table reference
-     */
-    public Person(Name alias) {
-        this(alias, PERSON);
-    }
+    public final TableField<PersonRecord, Integer> AGE = createField(DSL.name("age"), SQLDataType.INTEGER.nullable(false), this, "");
 
     private Person(Name alias, Table<PersonRecord> aliased) {
         this(alias, aliased, null);
@@ -88,6 +68,27 @@ public class Person extends TableImpl<PersonRecord> {
         super(alias, null, aliased, parameters, DSL.comment(""), TableOptions.table());
     }
 
+    /**
+     * Create an aliased <code>person</code> table reference
+     */
+    public Person(String alias) {
+        this(DSL.name(alias), PERSON);
+    }
+
+    /**
+     * Create an aliased <code>person</code> table reference
+     */
+    public Person(Name alias) {
+        this(alias, PERSON);
+    }
+
+    /**
+     * Create a <code>person</code> table reference
+     */
+    public Person() {
+        this(DSL.name("person"), null);
+    }
+
     @Override
     public Schema getSchema() {
         return DefaultSchema.DEFAULT_SCHEMA;
@@ -95,13 +96,13 @@ public class Person extends TableImpl<PersonRecord> {
 
     @Override
     public UniqueKey<PersonRecord> getPrimaryKey() {
-        return Internal.createUniqueKey(Person.PERSON, "CONSTRAINT_8", new TableField[] { Person.PERSON.ID }, true);
+        return Internal.createUniqueKey(Person.PERSON, DSL.name("KEY_person_PRIMARY"), new TableField[] { Person.PERSON.ID }, true);
     }
 
     @Override
     public List<UniqueKey<PersonRecord>> getKeys() {
         return Arrays.<UniqueKey<PersonRecord>>asList(
-              Internal.createUniqueKey(Person.PERSON, "CONSTRAINT_8", new TableField[] { Person.PERSON.ID }, true)
+              Internal.createUniqueKey(Person.PERSON, DSL.name("KEY_person_PRIMARY"), new TableField[] { Person.PERSON.ID }, true)
         );
     }
 

@@ -19,45 +19,45 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class PersonRecord extends UpdatableRecordImpl<PersonRecord> implements Record3<Integer, String, Integer> {
 
-    private static final long serialVersionUID = 1386010588;
+    private static final long serialVersionUID = 1L;
 
     /**
-     * Setter for <code>PERSON.ID</code>.
+     * Setter for <code>person.id</code>.
      */
     public void setId(Integer value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>PERSON.ID</code>.
+     * Getter for <code>person.id</code>.
      */
     public Integer getId() {
         return (Integer) get(0);
     }
 
     /**
-     * Setter for <code>PERSON.NAME</code>.
+     * Setter for <code>person.name</code>.
      */
     public void setName(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>PERSON.NAME</code>.
+     * Getter for <code>person.name</code>.
      */
     public String getName() {
         return (String) get(1);
     }
 
     /**
-     * Setter for <code>PERSON.AGE</code>.
+     * Setter for <code>person.age</code>.
      */
     public void setAge(Integer value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>PERSON.AGE</code>.
+     * Getter for <code>person.age</code>.
      */
     public Integer getAge() {
         return (Integer) get(2);
@@ -174,8 +174,8 @@ public class PersonRecord extends UpdatableRecordImpl<PersonRecord> implements R
     public PersonRecord(Integer id, String name, Integer age) {
         super(Person.PERSON);
 
-        set(0, id);
-        set(1, name);
-        set(2, age);
+        setId(id);
+        setName(name);
+        setAge(age);
     }
 }

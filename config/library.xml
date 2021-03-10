@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.13.0.xsd">
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.14.0.xsd">
     <!-- Configure the database connection here -->
     <jdbc>
         <!-- Dummy configurations for generating the classes in a local setup; these settings should not match real,
         production settings -->
-        <driver>org.h2.Driver</driver>
-        <url>jdbc:h2:~/quarkus</url>
-        <user>sa</user>
+        <driver>com.mysql.cj.jdbc.Driver</driver>
+        <url>jdbc:mysql://localhost:3306/quarkus</url>
+        <user>quarkus_admin</user>
+        <password>1234</password>
     </jdbc>
 
     <generator>
         <name>org.jooq.codegen.JavaGenerator</name>
         <database>
-            <name>org.jooq.meta.h2.H2Database</name>
+            <name>org.jooq.meta.mysql.MySQLDatabase</name>
             <!-- Ignore Flyway tables -->
             <excludes>FLYWAY_SCHEMA_HISTORY</excludes>
             <includes>.*</includes>
-            <inputSchema>PUBLIC</inputSchema>
+            <inputSchema>quarkus</inputSchema>
             <outputSchemaToDefault>true</outputSchemaToDefault>
         </database>
         <generate>
